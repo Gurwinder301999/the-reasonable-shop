@@ -1,0 +1,12 @@
+{
+  "name": "DesiTV — free live Indian TV",
+  "short_name": "DesiTV",
+  "description": "Watch free, official live Indian TV channels: news, Doordarshan, business, regional and devotional streams.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#0b1020",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
