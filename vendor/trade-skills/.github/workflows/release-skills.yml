@@ -1,0 +1,59 @@
+name: Release Skills
+
+on:
+  # Manual path: push a vX.Y.Z tag yourself.
+  push:
+    tags: ['v*']
+  # Automated path: called by auto-tag.yml right after it creates the tag.
+  # A tag pushed with GITHUB_TOKEN does NOT fire the `push: tags` trigger above
+  # (GitHub suppresses recursive workflow runs), so auto-tag.yml has to invoke
+  # this workflow directly instead of relying on the tag push.
+  workflow_call:
+    inputs:
+      tag:
+        description: 'Tag to release, e.g. v2.7.0'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.tag || github.ref_name }}
+
+      - name: Extract version from tag
+        id: version
+        run: echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Zip each skill
+        run: |
+          mkdir -p dist
+          for plugin_dir in plugins/*/; do
+            plugin_name=$(basename "$plugin_dir")
+            for skill_dir in "${plugin_dir}skills/"/*/; do
+              [ -d "$skill_dir" ] || continue
+              skill_name=$(basename "$skill_dir")
+              (cd "${plugin_dir}skills" && zip -r "../../../dist/${skill_name}.zip" "$skill_name/")
+              echo "Zipped: $skill_name (from $plugin_name)"
+            done
+          done
+
+      - name: Create or update release
+        run: |
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            gh release upload "$TAG" dist/*.zip --clobber
+          else
+            gh release create "$TAG" dist/*.zip \
+              --title "v${{ steps.version.outputs.version }}" \
+              --generate-notes \
+              --latest
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

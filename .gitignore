@@ -2,6 +2,3 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
-
-# Python venv used for report builds
-.venv/

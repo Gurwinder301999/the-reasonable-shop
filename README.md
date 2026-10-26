@@ -7,6 +7,17 @@
 | Wi-Fi Signal Strength Assessment | `reports/wifi-signal-assessment/wifi-signal-strength-assessment.pdf` | `python3 tools/build_wifi_report.py` |
 | Swing Strategy Backtest | `reports/trading/swing-strategy-backtest.pdf` | `python3 tools/trade_engine.py` |
 
+## Vendored skills
+
+| Skill | Source | Pinned at | Verify |
+|---|---|---|---|
+| `trade-skills` — options trading knowledge base (38 pitfalls, 15 case studies, 6 frameworks) | [himself65/trade-skills](https://github.com/himself65/trade-skills), MIT | `aa764fb` (plugin v2.20.0) | `python3 tools/check_skill.py` |
+
+A pinned snapshot, not a submodule: `vendor/trade-skills/`. Provenance, update steps, the missing
+data tiers and the US-options-versus-Indian-cash-equities scope gap are documented in
+[`vendor/trade-skills/VENDORED.md`](vendor/trade-skills/VENDORED.md). The snapshot is reference
+material only — its agent instructions are inert unless a task explicitly invokes the skill.
+
 ### Wi-Fi Signal Strength Assessment
 
 A typeset, four-page client-facing report covering seven locations in a single dwelling:
