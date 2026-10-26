@@ -1,0 +1,81 @@
+{
+  "params": {
+    "sma_fast": 50,
+    "sma_slow": 200,
+    "rsi_period": 2,
+    "rsi_entry": 12.0,
+    "rsi_exit": 80.0,
+    "atr_period": 14,
+    "stop_atr": 2.5,
+    "target_atr": 4.0,
+    "max_hold_bars": 40,
+    "max_positions": 4,
+    "max_position_pct": 0.2,
+    "risk_per_trade": 0.01
+  },
+  "costs": {
+    "stt_buy": 0.001,
+    "stt_sell": 0.001,
+    "exchange": 3.25e-05,
+    "sebi": 1e-06,
+    "stamp_buy": 0.00015,
+    "gst": 0.18,
+    "brokerage": 0.0,
+    "dp_per_sell": 15.93
+  },
+  "metrics": {
+    "start": "2017-01-02",
+    "end": "2025-09-30",
+    "years": 8.74,
+    "capital": 500000.0,
+    "final_equity": 546660.39,
+    "total_return_pct": 9.33,
+    "cagr_pct": 1.03,
+    "max_drawdown_pct": -5.1,
+    "drawdown_trough": "2019-10-07",
+    "sharpe": 0.37,
+    "trades": 261,
+    "win_rate_pct": 60.9,
+    "avg_win": 1795.77,
+    "avg_loss": -2341.84,
+    "profit_factor": 1.2,
+    "expectancy_per_trade": 178.78,
+    "avg_r": 0.04,
+    "avg_bars_held": 5.9,
+    "total_costs": 33223.33,
+    "exposure_pct": 16.8,
+    "buy_and_hold_return_pct": 105.81,
+    "by_symbol": {
+      "ALPHA": {
+        "trades": 55,
+        "net": 6723.52,
+        "win_rate": 60.0
+      },
+      "BRAVO": {
+        "trades": 51,
+        "net": 10167.77,
+        "win_rate": 62.7
+      },
+      "CHARLIE": {
+        "trades": 56,
+        "net": 7021.01,
+        "win_rate": 58.9
+      },
+      "DELTA": {
+        "trades": 18,
+        "net": -8178.67,
+        "win_rate": 55.6
+      },
+      "ECHO": {
+        "trades": 55,
+        "net": 33743.54,
+        "win_rate": 70.9
+      },
+      "FOXTROT": {
+        "trades": 26,
+        "net": -2816.77,
+        "win_rate": 46.2
+      }
+    }
+  }
+}
